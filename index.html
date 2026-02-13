@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searchlight | Payment Infrastructure for Strata</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a1628;
+            --navy-light: #152238;
+            --gold: #c9a962;
+            --gold-light: #e5d4a1;
+            --white: #ffffff;
+            --gray: #8892a0;
+            --gray-light: #c5ccd6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 169, 98, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .download-btn {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .download-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 8rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(201, 169, 98, 0.03) 0%, transparent 50%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: rgba(201, 169, 98, 0.15);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        h1 span {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-light);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+        }
+
+        .stat-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(201, 169, 98, 0.1);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            padding: 1.5rem 2.5rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .stat-text {
+            text-align: left;
+            font-size: 1rem;
+            color: var(--gray-light);
+            line-height: 1.4;
+        }
+
+        .stat-text strong {
+            color: var(--white);
+            display: block;
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            background: var(--navy-light);
+        }
+
+        .section-label {
+            color: var(--gold);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-intro {
+            color: var(--gray-light);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin-bottom: 4rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .comparison-card {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .comparison-card.before {
+            border-color: rgba(255, 100, 100, 0.2);
+        }
+
+        .comparison-card.after {
+            border-color: rgba(201, 169, 98, 0.3);
+            background: linear-gradient(135deg, var(--navy) 0%, rgba(201, 169, 98, 0.05) 100%);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .before .card-icon {
+            background: rgba(255, 100, 100, 0.1);
+        }
+
+        .after .card-icon {
+            background: rgba(201, 169, 98, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .pain-list, .solution-list {
+            list-style: none;
+        }
+
+        .pain-list li, .solution-list li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            color: var(--gray-light);
+            font-size: 0.95rem;
+        }
+
+        .pain-list li::before {
+            content: '✕';
+            color: #ff6b6b;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .solution-list li::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .arrow-divider {
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background: var(--navy);
+        }
+
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .flow-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold) 0%, rgba(201, 169, 98, 0.3) 100%);
+            z-index: 0;
+        }
+
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--navy-light);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            font-size: 0.875rem;
+            color: var(--gray);
+            max-width: 180px;
+            margin: 0 auto;
+        }
+
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .key-point {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(201, 169, 98, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(201, 169, 98, 0.1);
+        }
+
+        .key-point-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .key-point h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .key-point p {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        /* Capabilities Section */
+        .capabilities {
+            background: var(--navy-light);
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .cert-types {
+            background: var(--navy);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cert-types h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cert-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cert-name {
+            font-weight: 500;
+        }
+
+        .cert-jurisdiction {
+            font-size: 0.75rem;
+            background: rgba(201, 169, 98, 0.15);
+            color: var(--gold);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+        }
+
+        .features-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(201, 169, 98, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.25rem;
+        }
+
+        .feature-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-content p {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        /* Vision Section */
+        .vision {
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+            text-align: center;
+        }
+
+        .vision-statement {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .vision-statement strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.15) 0%, rgba(201, 169, 98, 0.05) 100%);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 24px;
+            padding: 3rem 4rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            padding: 2rem 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            section {
+                padding: 6rem 2rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .arrow-divider {
+                transform: rotate(90deg);
+                margin: 1rem 0;
+            }
+
+            .flow-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .flow-container::before {
+                display: none;
+            }
+
+            .key-points {
+                grid-template-columns: 1fr;
+            }
+
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stat-highlight {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stat-text {
+                text-align: center;
+            }
+
+            .cta-box {
+                padding: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav, .download-btn {
+                display: none;
+            }
+
+            section {
+                page-break-inside: avoid;
+                min-height: auto;
+                padding: 2rem;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gold);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <nav>
+        <div class="logo">Search<span>light</span></div>
+        <ul class="nav-links">
+            <li><a href="#hero">Overview</a></li>
+            <li><a href="#problem">Problem</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#capabilities">Capabilities</a></li>
+            <li><a href="#vision">Vision</a></li>
+        </ul>
+        <button class="download-btn" onclick="downloadPresentation()">Download PDF</button>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="container hero-content">
+            <span class="hero-label">Payment Infrastructure for Strata</span>
+            <h1>We handle the <span>transaction layer</span>.<br>You keep the control.</h1>
+            <p class="hero-subtitle">Searchlight removes the manual invoicing, EFT chasing, and reconciliation burden from strata information requests — while you stay fully in control.</p>
+
+            <div class="stat-highlight">
+                <span class="stat-number">15+</span>
+                <span class="stat-text"><strong>Minutes saved per request</strong>Validated by time-in-motion studies</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem-solution" id="problem">
+        <div class="container">
+            <span class="section-label">The Challenge</span>
+            <h2>The certificate isn't the problem.<br>The workflow around it is.</h2>
+            <p class="section-intro">Property transactions rely on accurate, timely information — but the process surrounding strata requests is still largely manual.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card before">
+                    <div class="card-header">
+                        <div class="card-icon">📧</div>
+                        <span class="card-title">Today's Reality</span>
+                    </div>
+                    <ul class="pain-list">
+                        <li>Email requests scattered across inboxes</li>
+                        <li>Manual PDF invoice generation</li>
+                        <li>Chasing EFT payments</li>
+                        <li>Manual payment reconciliation</li>
+                        <li>Follow-up confirmations</li>
+                        <li>No centralised tracking</li>
+                    </ul>
+                </div>
+
+                <div class="arrow-divider">→</div>
+
+                <div class="comparison-card after">
+                    <div class="card-header">
+                        <div class="card-icon">⚡</div>
+                        <span class="card-title">With Searchlight</span>
+                    </div>
+                    <ul class="solution-list">
+                        <li>Structured online request submission</li>
+                        <li>Instant payment processing</li>
+                        <li>Automated receipts & confirmations</li>
+                        <li>Live status tracking dashboard</li>
+                        <li>Clean reconciliation exports</li>
+                        <li>Full audit trail</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how">
+        <div class="container">
+            <span class="section-label">Simple Process</span>
+            <h2>How Searchlight Works</h2>
+            <p class="section-intro">A streamlined workflow that keeps you in control while eliminating administrative friction.</p>
+
+            <div class="flow-container">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">Request Submitted</h4>
+                    <p class="step-desc">Requester completes structured online form</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">Instant Payment</h4>
+                    <p class="step-desc">Payment processed immediately at your price</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">You're Notified</h4>
+                    <p class="step-desc">Dashboard alert with funds confirmed</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <h4 class="step-title">Certificate Issued</h4>
+                    <p class="step-desc">You issue as normal, fully logged</p>
+                </div>
+            </div>
+
+            <div class="key-points">
+                <div class="key-point">
+                    <div class="key-point-icon">💰</div>
+                    <h4>Direct Fund Flow</h4>
+                    <p>Funds go directly to you. We never hold trust funds.</p>
+                </div>
+                <div class="key-point">
+                    <div class="key-point-icon">🎯</div>
+                    <h4>Your Pricing</h4>
+                    <p>You set and control all certificate pricing.</p>
+                </div>
+                <div class="key-point">
+                    <div class="key-point-icon">📋</div>
+                    <h4>Your Process</h4>
+                    <p>Certificates issued exactly as they are today.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="capabilities" id="capabilities">
+        <div class="container">
+            <span class="section-label">Platform Capabilities</span>
+            <h2>Built for Strata Management</h2>
+            <p class="section-intro">Purpose-built infrastructure for strata and community information certificates.</p>
+
+            <div class="capabilities-grid">
+                <div class="cert-types">
+                    <h3>📄 Supported Certificate Types</h3>
+                    <ul class="cert-list">
+                        <li>
+                            <span class="cert-name">Section 110 Certificates</span>
+                            <span class="cert-jurisdiction">WA</span>
+                        </li>
+                        <li>
+                            <span class="cert-name">Section 41 Strata Information</span>
+                            <span class="cert-jurisdiction">SA</span>
+                        </li>
+                        <li>
+                            <span class="cert-name">Community Corporation Information</span>
+                            <span class="cert-jurisdiction">SA</span>
+                        </li>
+                        <li>
+                            <span class="cert-name">Other Jurisdictional Requests</span>
+                            <span class="cert-jurisdiction">AU-Wide</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-content">
+                            <h4>Manager Dashboard</h4>
+                            <p>Live status tracking for all requests and payments</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📁</div>
+                        <div class="feature-content">
+                            <h4>Reconciliation Exports</h4>
+                            <p>CSV and finance-ready transaction ledgers</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⏱️</div>
+                        <div class="feature-content">
+                            <h4>Payment Timestamps</h4>
+                            <p>Precise recording for compliance and audit</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🏷️</div>
+                        <div class="feature-content">
+                            <h4>White-Label Option</h4>
+                            <p>Deploy under your own brand</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <div class="feature-content">
+                            <h4>Approval Workflows</h4>
+                            <p>Manager sign-off before certificate release</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision" id="vision">
+        <div class="container">
+            <span class="section-label">Our Vision</span>
+            <h2>Partnership, Not Disruption</h2>
+            <p class="vision-statement">We're not here to change how you work. We're here to <strong>remove the friction</strong> that slows you down. Searchlight is transaction infrastructure — making billing <strong>simple, efficient, and auditable</strong> without changing how certificates are issued.</p>
+
+            <div class="cta-box">
+                <h3 class="cta-title">Ready to streamline your workflow?</h3>
+                <p class="cta-subtitle">See how Searchlight can save your team 15+ minutes per request.</p>
+                <div class="cta-buttons">
+                    <a href="mailto:contact@searchlight.com.au" class="btn-primary">Book a Demo</a>
+                    <a href="#hero" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <span class="footer-text">© 2024 Searchlight Technology Pty Ltd. All rights reserved.</span>
+            <div class="footer-links">
+                <a href="mailto:contact@searchlight.com.au">Contact</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Download functionality
+        function downloadPresentation() {
+            // Create a clean print version
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Searchlight - Payment Infrastructure for Strata</title>
+                    <style>
+                        @page { margin: 0.5in; }
+                        body {
+                            font-family: 'Inter', -apple-system, sans-serif;
+                            color: #1a1a2e;
+                            line-height: 1.6;
+                            max-width: 800px;
+                            margin: 0 auto;
+                            padding: 2rem;
+                        }
+                        h1 { font-size: 2.5rem; color: #0a1628; margin-bottom: 0.5rem; }
+                        h2 { font-size: 1.5rem; color: #0a1628; margin-top: 2rem; border-bottom: 2px solid #c9a962; padding-bottom: 0.5rem; }
+                        h3 { font-size: 1.2rem; color: #0a1628; }
+                        .gold { color: #c9a962; }
+                        .subtitle { font-size: 1.1rem; color: #666; margin-bottom: 2rem; }
+                        .stat { background: #f8f6f0; padding: 1.5rem; border-left: 4px solid #c9a962; margin: 1.5rem 0; }
+                        .stat-number { font-size: 2.5rem; font-weight: 700; color: #c9a962; }
+                        ul { margin: 1rem 0; padding-left: 1.5rem; }
+                        li { margin: 0.5rem 0; }
+                        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1.5rem 0; }
+                        .card { background: #f8f8f8; padding: 1.5rem; border-radius: 8px; }
+                        .flow { display: flex; justify-content: space-between; margin: 1.5rem 0; }
+                        .flow-step { text-align: center; flex: 1; }
+                        .flow-num { width: 40px; height: 40px; background: #c9a962; color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; }
+                        .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.875rem; color: #666; text-align: center; }
+                        @media print {
+                            body { padding: 0; }
+                            .page-break { page-break-before: always; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>Search<span class="gold">light</span></h1>
+                    <p class="subtitle">Payment Infrastructure for Strata Transactions</p>
+
+                    <div class="stat">
+                        <div class="stat-number">15+ minutes</div>
+                        <div>saved per request — validated by time-in-motion studies</div>
+                    </div>
+
+                    <h2>The Challenge</h2>
+                    <p><strong>The certificate isn't the problem. The workflow around it is.</strong></p>
+                    <p>Property transactions rely on accurate, timely information — but the process surrounding strata requests is still largely manual: emails, PDF invoices, EFT payments, reconciliation checks, and follow-up confirmations.</p>
+
+                    <div class="two-col">
+                        <div class="card">
+                            <h3>Today's Reality</h3>
+                            <ul>
+                                <li>Email requests scattered across inboxes</li>
+                                <li>Manual PDF invoice generation</li>
+                                <li>Chasing EFT payments</li>
+                                <li>Manual payment reconciliation</li>
+                                <li>Follow-up confirmations</li>
+                                <li>No centralised tracking</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3>With Searchlight</h3>
+                            <ul>
+                                <li>Structured online request submission</li>
+                                <li>Instant payment processing</li>
+                                <li>Automated receipts & confirmations</li>
+                                <li>Live status tracking dashboard</li>
+                                <li>Clean reconciliation exports</li>
+                                <li>Full audit trail</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2>How It Works</h2>
+                    <div class="flow">
+                        <div class="flow-step">
+                            <div class="flow-num">1</div>
+                            <p><strong>Request Submitted</strong><br>Structured online form</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-num">2</div>
+                            <p><strong>Instant Payment</strong><br>At your price</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-num">3</div>
+                            <p><strong>You're Notified</strong><br>Funds confirmed</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-num">4</div>
+                            <p><strong>Certificate Issued</strong><br>As normal, fully logged</p>
+                        </div>
+                    </div>
+
+                    <p><strong>Key Points:</strong></p>
+                    <ul>
+                        <li><strong>Direct Fund Flow:</strong> Funds go directly to you. We never hold trust funds.</li>
+                        <li><strong>Your Pricing:</strong> You set and control all certificate pricing.</li>
+                        <li><strong>Your Process:</strong> Certificates issued exactly as they are today.</li>
+                    </ul>
+
+                    <h2>Supported Certificate Types</h2>
+                    <ul>
+                        <li>Section 110 Certificates (WA)</li>
+                        <li>Section 41 Strata Information (SA)</li>
+                        <li>Community Corporation Information (SA)</li>
+                        <li>Other Jurisdictional Requests (AU-Wide)</li>
+                    </ul>
+
+                    <h2>Platform Capabilities</h2>
+                    <ul>
+                        <li><strong>Manager Dashboard:</strong> Live status tracking for all requests and payments</li>
+                        <li><strong>Reconciliation Exports:</strong> CSV and finance-ready transaction ledgers</li>
+                        <li><strong>Payment Timestamps:</strong> Precise recording for compliance and audit</li>
+                        <li><strong>White-Label Option:</strong> Deploy under your own brand</li>
+                        <li><strong>Approval Workflows:</strong> Manager sign-off before certificate release</li>
+                    </ul>
+
+                    <h2>Our Vision</h2>
+                    <p>We're not here to change how you work. We're here to <strong>remove the friction</strong> that slows you down.</p>
+                    <p>Searchlight is transaction infrastructure — making billing <strong>simple, efficient, and auditable</strong> without changing how certificates are issued.</p>
+
+                    <div class="footer">
+                        <p>© 2024 Searchlight Technology Pty Ltd</p>
+                        <p>Contact: contact@searchlight.com.au</p>
+                    </div>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+
+            // Trigger print dialog (which allows saving as PDF)
+            setTimeout(() => {
+                printWindow.print();
+            }, 500);
+        }
+
+        // Add subtle animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Make hero visible immediately
+        document.querySelector('.hero').style.opacity = '1';
+        document.querySelector('.hero').style.transform = 'translateY(0)';
+    </script>
+</body>
+</html>
