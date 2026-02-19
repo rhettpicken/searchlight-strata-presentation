@@ -79,24 +79,6 @@
             color: var(--gold);
         }
 
-        .download-btn {
-            background: var(--gold);
-            color: var(--navy);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.875rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .download-btn:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
-        }
-
         /* Sections */
         section {
             min-height: 100vh;
@@ -680,7 +662,7 @@
 
         /* Print Styles */
         @media print {
-            nav, .download-btn {
+            nav {
                 display: none;
             }
 
@@ -720,7 +702,6 @@
             <li><a href="#capabilities">Capabilities</a></li>
             <li><a href="#vision">Vision</a></li>
         </ul>
-        <button class="download-btn" onclick="downloadPresentation()">Download PDF</button>
     </nav>
 
     <section class="hero" id="hero">
@@ -948,147 +929,6 @@
                 }
             });
         });
-
-        // Download functionality
-        function downloadPresentation() {
-            // Create a clean print version
-            const printWindow = window.open('', '_blank');
-            printWindow.document.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Searchlight - Payment Infrastructure for Strata</title>
-                    <style>
-                        @page { margin: 0.5in; }
-                        body {
-                            font-family: 'Inter', -apple-system, sans-serif;
-                            color: #1a1a2e;
-                            line-height: 1.6;
-                            max-width: 800px;
-                            margin: 0 auto;
-                            padding: 2rem;
-                        }
-                        h1 { font-size: 2.5rem; color: #0a1628; margin-bottom: 0.5rem; }
-                        h2 { font-size: 1.5rem; color: #0a1628; margin-top: 2rem; border-bottom: 2px solid #c9a962; padding-bottom: 0.5rem; }
-                        h3 { font-size: 1.2rem; color: #0a1628; }
-                        .gold { color: #c9a962; }
-                        .subtitle { font-size: 1.1rem; color: #666; margin-bottom: 2rem; }
-                        .stat { background: #f8f6f0; padding: 1.5rem; border-left: 4px solid #c9a962; margin: 1.5rem 0; }
-                        .stat-number { font-size: 2.5rem; font-weight: 700; color: #c9a962; }
-                        ul { margin: 1rem 0; padding-left: 1.5rem; }
-                        li { margin: 0.5rem 0; }
-                        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1.5rem 0; }
-                        .card { background: #f8f8f8; padding: 1.5rem; border-radius: 8px; }
-                        .flow { display: flex; justify-content: space-between; margin: 1.5rem 0; }
-                        .flow-step { text-align: center; flex: 1; }
-                        .flow-num { width: 40px; height: 40px; background: #c9a962; color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; }
-                        .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 0.875rem; color: #666; text-align: center; }
-                        @media print {
-                            body { padding: 0; }
-                            .page-break { page-break-before: always; }
-                        }
-                    </style>
-                </head>
-                <body>
-                    <h1>Search<span class="gold">light</span></h1>
-                    <p class="subtitle">Payment Infrastructure for Strata Transactions</p>
-
-                    <div class="stat">
-                        <div class="stat-number">15+ minutes</div>
-                        <div>saved per request — validated by time-in-motion studies</div>
-                    </div>
-
-                    <h2>The Challenge</h2>
-                    <p><strong>The certificate isn't the problem. The workflow around it is.</strong></p>
-                    <p>Property transactions rely on accurate, timely information — but the process surrounding strata requests is still largely manual: emails, PDF invoices, EFT payments, reconciliation checks, and follow-up confirmations.</p>
-
-                    <div class="two-col">
-                        <div class="card">
-                            <h3>Today's Reality</h3>
-                            <ul>
-                                <li>Email requests scattered across inboxes</li>
-                                <li>Manual PDF invoice generation</li>
-                                <li>Chasing EFT payments</li>
-                                <li>Manual payment reconciliation</li>
-                                <li>Follow-up confirmations</li>
-                                <li>No centralised tracking</li>
-                            </ul>
-                        </div>
-                        <div class="card">
-                            <h3>With Searchlight</h3>
-                            <ul>
-                                <li>Structured online request submission</li>
-                                <li>Instant payment processing</li>
-                                <li>Automated receipts & confirmations</li>
-                                <li>Live status tracking dashboard</li>
-                                <li>Clean reconciliation exports</li>
-                                <li>Full audit trail</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <h2>How It Works</h2>
-                    <div class="flow">
-                        <div class="flow-step">
-                            <div class="flow-num">1</div>
-                            <p><strong>Request Submitted</strong><br>Structured online form</p>
-                        </div>
-                        <div class="flow-step">
-                            <div class="flow-num">2</div>
-                            <p><strong>Instant Payment</strong><br>At your price</p>
-                        </div>
-                        <div class="flow-step">
-                            <div class="flow-num">3</div>
-                            <p><strong>You're Notified</strong><br>Funds confirmed</p>
-                        </div>
-                        <div class="flow-step">
-                            <div class="flow-num">4</div>
-                            <p><strong>Certificate Issued</strong><br>As normal, fully logged</p>
-                        </div>
-                    </div>
-
-                    <p><strong>Key Points:</strong></p>
-                    <ul>
-                        <li><strong>Direct Fund Flow:</strong> Funds go directly to you. We never hold trust funds.</li>
-                        <li><strong>Your Pricing:</strong> You set and control all certificate pricing.</li>
-                        <li><strong>Your Process:</strong> Certificates issued exactly as they are today.</li>
-                    </ul>
-
-                    <h2>Supported Certificate Types</h2>
-                    <ul>
-                        <li>Section 110 Certificates (WA)</li>
-                        <li>Section 41 Strata Information (SA)</li>
-                        <li>Community Corporation Information (SA)</li>
-                        <li>Other Jurisdictional Requests (AU-Wide)</li>
-                    </ul>
-
-                    <h2>Platform Capabilities</h2>
-                    <ul>
-                        <li><strong>Manager Dashboard:</strong> Live status tracking for all requests and payments</li>
-                        <li><strong>Reconciliation Exports:</strong> CSV and finance-ready transaction ledgers</li>
-                        <li><strong>Payment Timestamps:</strong> Precise recording for compliance and audit</li>
-                        <li><strong>White-Label Option:</strong> Deploy under your own brand</li>
-                        <li><strong>Approval Workflows:</strong> Manager sign-off before certificate release</li>
-                    </ul>
-
-                    <h2>Our Vision</h2>
-                    <p>We're not here to change how you work. We're here to <strong>remove the friction</strong> that slows you down.</p>
-                    <p>Searchlight is transaction infrastructure — making billing <strong>simple, efficient, and auditable</strong> without changing how certificates are issued.</p>
-
-                    <div class="footer">
-                        <p>© 2024 Searchlight Technology Pty Ltd</p>
-                        <p>Contact: contact@searchlight.com.au</p>
-                    </div>
-                </body>
-                </html>
-            `);
-            printWindow.document.close();
-
-            // Trigger print dialog (which allows saving as PDF)
-            setTimeout(() => {
-                printWindow.print();
-            }, 500);
-        }
 
         // Add subtle animations on scroll
         const observerOptions = {
