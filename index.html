@@ -55,6 +55,12 @@
             font-size: 1.5rem;
             color: var(--white);
             letter-spacing: -0.5px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
         }
 
         .logo span {
@@ -159,12 +165,13 @@
         .stat-highlight {
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
             background: rgba(201, 169, 98, 0.1);
             border: 1px solid rgba(201, 169, 98, 0.2);
-            padding: 1.5rem 2.5rem;
-            border-radius: 16px;
+            padding: 2rem 3rem;
+            border-radius: 20px;
             margin-top: 2rem;
+            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.1);
         }
 
         .stat-number {
@@ -225,6 +232,13 @@
             border-radius: 20px;
             padding: 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         }
 
         .comparison-card.before {
@@ -294,9 +308,22 @@
         }
 
         .arrow-divider {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--gold);
-            opacity: 0.5;
+            background: rgba(201, 169, 98, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(201, 169, 98, 0.3);
+            animation: pulse-arrow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-arrow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         /* How It Works Section */
@@ -374,6 +401,13 @@
             background: rgba(201, 169, 98, 0.03);
             border-radius: 16px;
             border: 1px solid rgba(201, 169, 98, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .key-point:hover {
+            transform: translateY(-8px);
+            border-color: rgba(201, 169, 98, 0.4);
+            background: rgba(201, 169, 98, 0.08);
         }
 
         .key-point-icon {
@@ -409,6 +443,7 @@
             padding: 2.5rem;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
         .cert-types h3 {
@@ -456,6 +491,14 @@
             display: flex;
             gap: 1.25rem;
             align-items: flex-start;
+            padding: 1rem;
+            border-radius: 12px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(201, 169, 98, 0.05);
+            transform: translateX(5px);
         }
 
         .feature-icon {
@@ -507,6 +550,7 @@
             padding: 3rem 4rem;
             max-width: 700px;
             margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(201, 169, 98, 0.15);
         }
 
         .cta-title {
@@ -534,11 +578,13 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(201, 169, 98, 0.3);
         }
 
         .btn-primary:hover {
             background: var(--gold-light);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201, 169, 98, 0.4);
         }
 
         .btn-secondary {
@@ -555,6 +601,8 @@
         .btn-secondary:hover {
             border-color: var(--gold);
             color: var(--gold);
+            transform: translateY(-3px);
+            background: rgba(201, 169, 98, 0.1);
         }
 
         /* Footer */
@@ -694,7 +742,7 @@
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <nav>
-        <div class="logo">Search<span>light</span></div>
+        <a href="https://www.searchlighttechnology.com.au" target="_blank" class="logo">Search<span>light</span></a>
         <ul class="nav-links">
             <li><a href="#hero">Overview</a></li>
             <li><a href="#problem">Problem</a></li>
@@ -712,7 +760,7 @@
 
             <div class="stat-highlight">
                 <span class="stat-number">15+</span>
-                <span class="stat-text"><strong>Minutes saved per request</strong>Validated by time-in-motion studies</span>
+                <span class="stat-text"><strong>Minutes saved per request</strong><br>Validated by time-in-motion studies</span>
             </div>
         </div>
     </section>
@@ -889,7 +937,7 @@
                 <p class="cta-subtitle">See how Searchlight can save your team 15+ minutes per request.</p>
                 <div class="cta-buttons">
                     <a href="https://www.searchlighttechnology.com.au/contact-us" target="_blank" class="btn-primary">Book a Demo</a>
-                    <a href="https://www.searchlighttechnology.com.au/contact-us" target="_blank" class="btn-secondary">Learn More</a>
+                    <a href="https://www.searchlighttechnology.com.au" target="_blank" class="btn-secondary">Visit Website</a>
                 </div>
             </div>
         </div>
@@ -897,11 +945,10 @@
 
     <footer>
         <div class="footer-content">
-            <span class="footer-text">© 2024 Searchlight Technology Pty Ltd. All rights reserved.</span>
+            <span class="footer-text">© 2025 Searchlight Technology Pty Ltd. All rights reserved.</span>
             <div class="footer-links">
-                <a href="mailto:contact@searchlight.com.au">Contact</a>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
+                <a href="https://www.searchlighttechnology.com.au/contact-us" target="_blank">Contact</a>
+                <a href="https://www.searchlighttechnology.com.au" target="_blank">Website</a>
             </div>
         </div>
     </footer>
