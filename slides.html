@@ -15,14 +15,10 @@
             --white: #ffffff;
             --gray: #8892a0;
             --gray-light: #c5ccd6;
-            --r-background-color: #0a1628;
-            --r-main-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --r-main-font-size: 32px;
-            --r-main-color: #ffffff;
-            --r-heading-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --r-heading-color: #ffffff;
-            --r-heading-font-weight: 700;
-            --r-heading-letter-spacing: -0.02em;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         .reveal-viewport {
@@ -30,514 +26,492 @@
         }
 
         .reveal {
-            font-family: var(--r-main-font);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--white);
         }
 
-        .reveal h1, .reveal h2, .reveal h3 {
-            font-family: var(--r-heading-font);
-            font-weight: var(--r-heading-font-weight);
-            letter-spacing: var(--r-heading-letter-spacing);
-            text-transform: none;
+        .reveal .slides {
+            text-align: center;
         }
 
+        .reveal .slides section {
+            padding: 40px;
+            height: 100%;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Typography */
         .reveal h1 {
-            font-size: 2.5em;
-            line-height: 1.1;
+            font-size: 2.6em;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin: 0 0 0.4em 0;
+            color: var(--white);
         }
 
         .reveal h2 {
-            font-size: 1.8em;
+            font-size: 2em;
+            font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 0.5em;
+            letter-spacing: -0.02em;
+            margin: 0 0 0.3em 0;
+            color: var(--white);
         }
 
         .reveal h3 {
-            font-size: 1.3em;
+            font-size: 1.4em;
+            font-weight: 600;
             color: var(--gold);
+            margin: 0 0 0.3em 0;
         }
 
         .reveal p {
+            font-size: 1.1em;
             line-height: 1.5;
+            color: var(--gray-light);
+            margin: 0;
         }
 
         .reveal .gold {
             color: var(--gold);
         }
 
-        .reveal .gray {
-            color: var(--gray-light);
-        }
-
-        .reveal .small {
-            font-size: 0.7em;
-        }
-
-        /* Section Label */
-        .section-label {
-            display: inline-block;
-            background: rgba(201, 169, 98, 0.15);
-            border: 1px solid rgba(201, 169, 98, 0.3);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.5em;
-            color: var(--gold);
-            margin-bottom: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Title Slide */
-        .title-slide h1 {
-            font-size: 2.8em;
-            margin-bottom: 0.3em;
-        }
-
-        .title-slide .subtitle {
-            font-size: 1.1em;
-            color: var(--gray-light);
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-
-        /* Two Column Layout */
-        .two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            text-align: left;
-            align-items: start;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--navy-light);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: left;
-        }
-
-        .card.problem {
-            border-color: rgba(255, 100, 100, 0.2);
-        }
-
-        .card.solution {
-            border-color: rgba(201, 169, 98, 0.3);
-            background: linear-gradient(135deg, var(--navy-light) 0%, rgba(201, 169, 98, 0.05) 100%);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            font-size: 1.1em;
-            font-weight: 600;
-        }
-
-        .card-icon {
-            font-size: 1.5em;
-        }
-
-        /* Lists */
-        .reveal ul, .reveal ol {
-            display: block;
-            margin-left: 0;
-            text-align: left;
-        }
-
-        .reveal li {
-            margin-bottom: 0.6em;
-            font-size: 0.85em;
-            color: var(--gray-light);
-        }
-
-        .pain-list li::marker {
-            content: '✕  ';
-            color: #ff6b6b;
-        }
-
-        .solution-list li::marker {
-            content: '✓  ';
-            color: var(--gold);
-        }
-
-        /* Three Column Grid */
-        .three-columns {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .why-card {
-            background: rgba(201, 169, 98, 0.05);
-            border: 1px solid rgba(201, 169, 98, 0.15);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .why-card .icon {
-            font-size: 2em;
-            margin-bottom: 0.5rem;
-        }
-
-        .why-card h4 {
-            font-size: 0.9em;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--white);
-        }
-
-        .why-card p {
-            font-size: 0.65em;
-            color: var(--gray);
-            line-height: 1.4;
-        }
-
-        /* Flow Steps */
-        .flow-steps {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-top: 2rem;
-            position: relative;
-        }
-
-        .flow-steps::before {
-            content: '';
-            position: absolute;
-            top: 35px;
-            left: 12%;
-            right: 12%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--gold) 0%, rgba(201, 169, 98, 0.3) 100%);
-            z-index: 0;
-        }
-
-        .flow-step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-number {
-            width: 70px;
-            height: 70px;
-            background: var(--navy);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gold);
-            margin: 0 auto 1rem;
-        }
-
-        .flow-step h4 {
-            font-size: 0.85em;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            color: var(--white);
-        }
-
-        .flow-step p {
-            font-size: 0.6em;
-            color: var(--gray);
-            max-width: 150px;
-            margin: 0 auto;
-        }
-
-        /* Key Points */
-        .key-points {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .key-point {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(201, 169, 98, 0.03);
-            border-radius: 12px;
-            border: 1px solid rgba(201, 169, 98, 0.1);
-        }
-
-        .key-point .icon {
-            font-size: 2em;
-            margin-bottom: 0.5rem;
-        }
-
-        .key-point h4 {
-            font-size: 0.9em;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            color: var(--white);
-        }
-
-        .key-point p {
-            font-size: 0.65em;
-            color: var(--gray);
-        }
-
-        /* Demo Slide */
-        .demo-container {
-            background: var(--navy-light);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .demo-image-wrapper {
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .demo-image-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .demo-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .demo-nav-btn {
-            background: rgba(201, 169, 98, 0.15);
-            border: 1px solid rgba(201, 169, 98, 0.3);
-            color: var(--gold);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .demo-nav-btn:hover {
-            background: var(--gold);
-            color: var(--navy);
-        }
-
-        .demo-nav-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .demo-indicators {
-            display: flex;
-            gap: 0.4rem;
-        }
-
-        .demo-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(201, 169, 98, 0.3);
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s ease;
-        }
-
-        .demo-dot.active {
-            background: var(--gold);
-            transform: scale(1.2);
-        }
-
-        .demo-caption {
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .demo-step {
-            display: inline-block;
-            background: rgba(201, 169, 98, 0.15);
-            color: var(--gold);
-            padding: 0.2rem 0.6rem;
-            border-radius: 50px;
-            font-size: 0.5em;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .demo-title {
-            font-size: 0.9em;
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-            color: var(--white);
-        }
-
-        .demo-desc {
-            font-size: 0.6em;
-            color: var(--gray);
-        }
-
-        /* Capabilities */
-        .cert-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .cert-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8em;
-        }
-
-        .cert-list li:last-child {
-            border-bottom: none;
-        }
-
-        .cert-jurisdiction {
-            font-size: 0.7em;
-            background: rgba(201, 169, 98, 0.15);
-            color: var(--gold);
-            padding: 0.2rem 0.6rem;
-            border-radius: 50px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 0.75rem;
-            align-items: flex-start;
-            text-align: left;
-        }
-
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(201, 169, 98, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 1em;
-        }
-
-        .feature-item h4 {
-            font-size: 0.75em;
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-            color: var(--white);
-        }
-
-        .feature-item p {
-            font-size: 0.6em;
-            color: var(--gray);
-            margin: 0;
-        }
-
-        /* Vision Slide */
-        .vision-statement {
-            font-size: 1.2em;
-            font-weight: 300;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.5;
-        }
-
-        .vision-statement strong {
-            color: var(--gold);
-            font-weight: 600;
-        }
-
-        /* Final Slide */
-        .final-slide h2 {
-            font-size: 2.2em;
-            margin-bottom: 0.5em;
-        }
-
-        .final-slide .contact-info {
-            margin-top: 2rem;
-            font-size: 0.9em;
-            color: var(--gray-light);
-        }
-
-        .final-slide .contact-info a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
         /* Logo */
         .logo {
             font-weight: 700;
-            font-size: 1.2em;
-            color: var(--white);
-            letter-spacing: -0.5px;
+            font-size: 1.4em;
+            margin-bottom: 1.5em;
         }
 
         .logo span {
             color: var(--gold);
         }
 
-        /* Slide backgrounds */
-        .reveal .slides section[data-background-color="navy-light"] {
-            background: var(--navy-light);
+        /* Section Label */
+        .label {
+            display: inline-block;
+            background: rgba(201, 169, 98, 0.15);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            padding: 0.5em 1.2em;
+            border-radius: 50px;
+            font-size: 0.55em;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1em;
         }
 
-        /* Navigation hint */
-        .nav-hint {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Subtitle */
+        .subtitle {
+            font-size: 1.15em;
+            max-width: 700px;
+            margin: 0.5em auto 0;
+        }
+
+        /* Two Column Layout */
+        .columns {
+            display: flex;
+            gap: 40px;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 1em;
+        }
+
+        .column {
+            flex: 1;
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: left;
+        }
+
+        .column.problem {
+            border: 1px solid rgba(255, 100, 100, 0.25);
+        }
+
+        .column.solution {
+            border: 1px solid rgba(201, 169, 98, 0.35);
+            background: linear-gradient(135deg, var(--navy-light) 0%, rgba(201, 169, 98, 0.08) 100%);
+        }
+
+        .column-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .column-header .icon {
+            font-size: 1.4em;
+        }
+
+        /* Lists */
+        .reveal ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .reveal li {
+            font-size: 0.85em;
+            color: var(--gray-light);
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .problem li::before {
+            content: '✕';
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        .solution li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Cards Grid */
+        .cards {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 1.2em;
+        }
+
+        .card {
+            flex: 1;
+            background: rgba(201, 169, 98, 0.06);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .card .icon {
+            font-size: 2.2em;
+            margin-bottom: 0.4em;
+        }
+
+        .card h4 {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0 0 0.4em 0;
+        }
+
+        .card p {
+            font-size: 0.75em;
+            color: var(--gray);
+            line-height: 1.45;
+        }
+
+        /* Flow Steps */
+        .flow {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 950px;
+            margin-top: 1.5em;
+            position: relative;
+        }
+
+        .flow::before {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 80px;
+            right: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), rgba(201, 169, 98, 0.3));
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        .step-num {
+            width: 64px;
+            height: 64px;
+            background: var(--navy);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 0 auto 16px;
+        }
+
+        .step h4 {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0 0 6px 0;
+        }
+
+        .step p {
             font-size: 0.7em;
             color: var(--gray);
-            opacity: 0.6;
+            max-width: 140px;
+            margin: 0 auto;
         }
 
-        .nav-hint kbd {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-family: inherit;
+        /* Demo Container */
+        .demo-box {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 20px;
+            width: 100%;
+            max-width: 850px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        /* Progress bar */
+        .demo-screen {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .demo-screen img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 380px;
+            object-fit: contain;
+        }
+
+        .demo-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .demo-btn {
+            background: rgba(201, 169, 98, 0.15);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            color: var(--gold);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-btn:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .demo-btn:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .demo-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .demo-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(201, 169, 98, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .demo-dot.active {
+            background: var(--gold);
+        }
+
+        .demo-info {
+            text-align: center;
+            margin-top: 14px;
+        }
+
+        .demo-info .step-label {
+            font-size: 0.6em;
+            color: var(--gold);
+            background: rgba(201, 169, 98, 0.15);
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .demo-info h4 {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0 0 4px 0;
+        }
+
+        .demo-info p {
+            font-size: 0.7em;
+            color: var(--gray);
+        }
+
+        /* Cert List */
+        .cert-box {
+            background: var(--navy-light);
+            border-radius: 16px;
+            padding: 30px 40px;
+            max-width: 600px;
+            width: 100%;
+            margin-top: 1em;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .cert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.9em;
+            color: var(--white);
+        }
+
+        .cert-item:last-child {
+            border-bottom: none;
+        }
+
+        .cert-tag {
+            font-size: 0.7em;
+            background: rgba(201, 169, 98, 0.15);
+            color: var(--gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 1.2em;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            text-align: left;
+            padding: 16px;
+            background: rgba(201, 169, 98, 0.04);
+            border-radius: 12px;
+        }
+
+        .feature .icon {
+            font-size: 1.4em;
+            flex-shrink: 0;
+        }
+
+        .feature h4 {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0 0 4px 0;
+        }
+
+        .feature p {
+            font-size: 0.65em;
+            color: var(--gray);
+            line-height: 1.4;
+        }
+
+        /* Vision Quote */
+        .quote {
+            font-size: 1.3em;
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 800px;
+            color: var(--gray-light);
+        }
+
+        .quote strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Final Slide */
+        .final .logo {
+            font-size: 2.2em;
+            margin-bottom: 0.8em;
+        }
+
+        .final p {
+            margin-top: 1em;
+        }
+
+        .final a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Progress Bar */
         .reveal .progress {
-            background: rgba(201, 169, 98, 0.2);
             height: 4px;
+            background: rgba(201, 169, 98, 0.2);
         }
 
         .reveal .progress span {
             background: var(--gold);
         }
 
-        /* Slide number */
+        /* Slide Numbers */
         .reveal .slide-number {
-            color: var(--gray);
+            font-family: 'Inter', sans-serif;
             font-size: 14px;
-            font-family: var(--r-main-font);
+            color: var(--gray);
+            background: transparent;
+        }
+
+        /* Nav Hint */
+        .nav-hint {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--gray);
+            opacity: 0.5;
+            font-family: 'Inter', sans-serif;
+            transition: opacity 0.3s;
+        }
+
+        .nav-hint kbd {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
         }
     </style>
 </head>
@@ -545,31 +519,30 @@
     <div class="reveal">
         <div class="slides">
 
-            <!-- Slide 1: Title -->
-            <section class="title-slide">
+            <!-- 1. Title -->
+            <section>
                 <div class="logo">Search<span>light</span></div>
-                <br><br>
-                <span class="section-label">Built for Strata Management</span>
+                <span class="label">Built for Strata Management</span>
                 <h1>Requests arrive paid.<br><span class="gold">You just issue.</span></h1>
-                <p class="subtitle">No more invoicing. No more EFT chasing. No more reconciliation headaches. Just paid requests, ready to process.</p>
+                <p class="subtitle">No more invoicing. No more EFT chasing. No more reconciliation headaches.</p>
             </section>
 
-            <!-- Slide 2: The Problem -->
+            <!-- 2. The Challenge -->
             <section>
-                <span class="section-label">The Challenge</span>
+                <span class="label">The Challenge</span>
                 <h2>The certificate isn't the problem.<br>The workflow around it is.</h2>
-                <p class="gray small">Property transactions rely on accurate, timely information — but the process surrounding strata requests is still largely manual.</p>
+                <p class="subtitle">Property transactions need accurate, timely information — but the process is still largely manual.</p>
             </section>
 
-            <!-- Slide 3: Before vs After -->
+            <!-- 3. Before & After -->
             <section>
-                <div class="two-columns">
-                    <div class="card problem">
-                        <div class="card-header">
-                            <span class="card-icon">📧</span>
+                <div class="columns">
+                    <div class="column problem">
+                        <div class="column-header">
+                            <span class="icon">📧</span>
                             <span>Today's Reality</span>
                         </div>
-                        <ul class="pain-list">
+                        <ul>
                             <li>Email requests scattered across inboxes</li>
                             <li>Manual PDF invoice generation</li>
                             <li>Chasing EFT payments</li>
@@ -578,12 +551,12 @@
                             <li>No centralised tracking</li>
                         </ul>
                     </div>
-                    <div class="card solution">
-                        <div class="card-header">
-                            <span class="card-icon">⚡</span>
+                    <div class="column solution">
+                        <div class="column-header">
+                            <span class="icon">⚡</span>
                             <span>With Searchlight</span>
                         </div>
-                        <ul class="solution-list">
+                        <ul>
                             <li>Structured online request submission</li>
                             <li>Instant payment processing</li>
                             <li>Automated receipts & confirmations</li>
@@ -595,352 +568,306 @@
                 </div>
             </section>
 
-            <!-- Slide 4: Why Searchlight -->
+            <!-- 4. Why Searchlight -->
             <section>
-                <span class="section-label">Why Searchlight</span>
+                <span class="label">Why Searchlight</span>
                 <h2>We've solved this problem before.</h2>
-                <p class="gray small">Searchlight was built from years of hands-on experience in property transaction infrastructure.</p>
-                <div class="three-columns">
-                    <div class="why-card">
+                <p class="subtitle">Built from years of hands-on experience in property transaction infrastructure.</p>
+                <div class="cards">
+                    <div class="card">
                         <div class="icon">🏗️</div>
                         <h4>Property Transaction Experts</h4>
-                        <p>Deep expertise in Form 1, council searches, and conveyancing workflows across Australia.</p>
+                        <p>Deep expertise in Form 1, council searches, and conveyancing workflows.</p>
                     </div>
-                    <div class="why-card">
+                    <div class="card">
                         <div class="icon">⚙️</div>
                         <h4>Proven Infrastructure</h4>
-                        <p>Our payment and order management systems are already processing thousands of property transactions.</p>
+                        <p>Our systems already process thousands of property transactions.</p>
                     </div>
-                    <div class="why-card">
+                    <div class="card">
                         <div class="icon">🤝</div>
-                        <h4>Built With You, Not Around You</h4>
-                        <p>We're not replacing your systems. We're removing the friction that sits between you and getting paid.</p>
+                        <h4>Built With You</h4>
+                        <p>We remove friction, not replace your systems.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Slide 5: How It Works -->
+            <!-- 5. How It Works -->
             <section>
-                <span class="section-label">Simple Process</span>
+                <span class="label">Simple Process</span>
                 <h2>How Searchlight Works</h2>
-                <p class="gray small">A streamlined workflow that keeps you in control while eliminating administrative friction.</p>
-                <div class="flow-steps">
-                    <div class="flow-step">
-                        <div class="step-number">1</div>
+                <div class="flow">
+                    <div class="step">
+                        <div class="step-num">1</div>
                         <h4>Request Submitted</h4>
-                        <p>Requester completes structured online form</p>
+                        <p>Requester completes online form</p>
                     </div>
-                    <div class="flow-step">
-                        <div class="step-number">2</div>
+                    <div class="step">
+                        <div class="step-num">2</div>
                         <h4>Instant Payment</h4>
-                        <p>Payment processed immediately at your price</p>
+                        <p>Paid immediately at your price</p>
                     </div>
-                    <div class="flow-step">
-                        <div class="step-number">3</div>
+                    <div class="step">
+                        <div class="step-num">3</div>
                         <h4>You're Notified</h4>
-                        <p>Dashboard alert with funds confirmed</p>
+                        <p>Dashboard alert, funds confirmed</p>
                     </div>
-                    <div class="flow-step">
-                        <div class="step-number">4</div>
+                    <div class="step">
+                        <div class="step-num">4</div>
                         <h4>Certificate Issued</h4>
                         <p>You issue as normal, fully logged</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Slide 6: Key Points -->
+            <!-- 6. Key Points -->
             <section>
-                <span class="section-label">What Matters</span>
+                <span class="label">What Matters</span>
                 <h2>You Stay In Control</h2>
-                <div class="key-points">
-                    <div class="key-point">
+                <div class="cards">
+                    <div class="card">
                         <div class="icon">💰</div>
                         <h4>Direct Fund Flow</h4>
                         <p>Funds go directly to you.</p>
                     </div>
-                    <div class="key-point">
+                    <div class="card">
                         <div class="icon">🎯</div>
                         <h4>Your Pricing</h4>
-                        <p>You set and control all certificate pricing.</p>
+                        <p>You set and control all pricing.</p>
                     </div>
-                    <div class="key-point">
+                    <div class="card">
                         <div class="icon">📋</div>
                         <h4>Your Process</h4>
-                        <p>Certificates issued exactly as they are today.</p>
+                        <p>Certificates issued exactly as today.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Slide 7: Demo - Manager Dashboard -->
+            <!-- 7. Demo: Manager -->
             <section>
-                <span class="section-label">Interactive Demo</span>
+                <span class="label">Interactive Demo</span>
                 <h2>Your Dashboard</h2>
-                <div class="demo-container" id="demo-manager">
-                    <div class="demo-image-wrapper">
-                        <img src="images/manager-dashboard.png" alt="Manager Dashboard" class="demo-image" data-index="0">
+                <div class="demo-box" id="demo-manager">
+                    <div class="demo-screen">
+                        <img src="images/manager-dashboard.png" alt="Dashboard">
                     </div>
-                    <div class="demo-controls">
-                        <button class="demo-nav-btn prev-btn" disabled>&larr;</button>
-                        <div class="demo-indicators">
-                            <button class="demo-dot active" data-index="0"></button>
-                            <button class="demo-dot" data-index="1"></button>
-                            <button class="demo-dot" data-index="2"></button>
-                            <button class="demo-dot" data-index="3"></button>
+                    <div class="demo-nav">
+                        <button class="demo-btn prev-btn" disabled>←</button>
+                        <div class="demo-dots">
+                            <button class="demo-dot active" data-i="0"></button>
+                            <button class="demo-dot" data-i="1"></button>
+                            <button class="demo-dot" data-i="2"></button>
+                            <button class="demo-dot" data-i="3"></button>
                         </div>
-                        <button class="demo-nav-btn next-btn">&rarr;</button>
+                        <button class="demo-btn next-btn">→</button>
                     </div>
-                    <div class="demo-caption">
-                        <span class="demo-step">Step 1 of 4</span>
-                        <div class="demo-title">Active Orders Dashboard</div>
-                        <div class="demo-desc">View all incoming certificate requests with status, council assignments, and priority at a glance.</div>
+                    <div class="demo-info">
+                        <span class="step-label">Step 1 of 4</span>
+                        <h4>Active Orders Dashboard</h4>
+                        <p>View all incoming requests with status and priority at a glance.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Slide 8: Demo - Requester Flow -->
+            <!-- 8. Demo: Requester -->
             <section>
-                <span class="section-label">Interactive Demo</span>
+                <span class="label">Interactive Demo</span>
                 <h2>How Requests Come In</h2>
-                <div class="demo-container" id="demo-user">
-                    <div class="demo-image-wrapper">
-                        <img src="images/strata-1.png" alt="Requester Flow" class="demo-image" data-index="0">
+                <div class="demo-box" id="demo-user">
+                    <div class="demo-screen">
+                        <img src="images/strata-1.png" alt="Requester Flow">
                     </div>
-                    <div class="demo-controls">
-                        <button class="demo-nav-btn prev-btn" disabled>&larr;</button>
-                        <div class="demo-indicators">
-                            <button class="demo-dot active" data-index="0"></button>
-                            <button class="demo-dot" data-index="1"></button>
-                            <button class="demo-dot" data-index="2"></button>
-                            <button class="demo-dot" data-index="3"></button>
-                            <button class="demo-dot" data-index="4"></button>
-                            <button class="demo-dot" data-index="5"></button>
-                            <button class="demo-dot" data-index="6"></button>
+                    <div class="demo-nav">
+                        <button class="demo-btn prev-btn" disabled>←</button>
+                        <div class="demo-dots">
+                            <button class="demo-dot active" data-i="0"></button>
+                            <button class="demo-dot" data-i="1"></button>
+                            <button class="demo-dot" data-i="2"></button>
+                            <button class="demo-dot" data-i="3"></button>
+                            <button class="demo-dot" data-i="4"></button>
+                            <button class="demo-dot" data-i="5"></button>
+                            <button class="demo-dot" data-i="6"></button>
                         </div>
-                        <button class="demo-nav-btn next-btn">&rarr;</button>
+                        <button class="demo-btn next-btn">→</button>
                     </div>
-                    <div class="demo-caption">
-                        <span class="demo-step">Step 1 of 7</span>
-                        <div class="demo-title">Orders Dashboard</div>
-                        <div class="demo-desc">View all certificate orders in one place with real-time status tracking.</div>
+                    <div class="demo-info">
+                        <span class="step-label">Step 1 of 7</span>
+                        <h4>Orders Dashboard</h4>
+                        <p>Requesters view all their orders with real-time status tracking.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Slide 9: Capabilities - Certificates -->
+            <!-- 9. Certificates -->
             <section>
-                <span class="section-label">Platform Capabilities</span>
+                <span class="label">Capabilities</span>
                 <h2>Supported Certificate Types</h2>
-                <div class="card" style="max-width: 600px; margin: 1.5rem auto 0;">
-                    <ul class="cert-list">
-                        <li>
-                            <span>Section 110 Certificates</span>
-                            <span class="cert-jurisdiction">WA</span>
-                        </li>
-                        <li>
-                            <span>Section 41 Strata Information</span>
-                            <span class="cert-jurisdiction">SA</span>
-                        </li>
-                        <li>
-                            <span>Community Corporation Information</span>
-                            <span class="cert-jurisdiction">SA</span>
-                        </li>
-                        <li>
-                            <span>Other Jurisdictional Requests</span>
-                            <span class="cert-jurisdiction">AU-Wide</span>
-                        </li>
-                    </ul>
+                <div class="cert-box">
+                    <div class="cert-item">
+                        <span>Section 110 Certificates</span>
+                        <span class="cert-tag">WA</span>
+                    </div>
+                    <div class="cert-item">
+                        <span>Section 41 Strata Information</span>
+                        <span class="cert-tag">SA</span>
+                    </div>
+                    <div class="cert-item">
+                        <span>Community Corporation Information</span>
+                        <span class="cert-tag">SA</span>
+                    </div>
+                    <div class="cert-item">
+                        <span>Other Jurisdictional Requests</span>
+                        <span class="cert-tag">AU-Wide</span>
+                    </div>
                 </div>
             </section>
 
-            <!-- Slide 10: Capabilities - Features -->
+            <!-- 10. Features -->
             <section>
-                <span class="section-label">Platform Capabilities</span>
+                <span class="label">Capabilities</span>
                 <h2>Built for Strata Management</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">📊</div>
+                <div class="features">
+                    <div class="feature">
+                        <span class="icon">📊</span>
                         <div>
                             <h4>Manager Dashboard</h4>
-                            <p>Live status tracking for all requests and payments</p>
+                            <p>Live tracking for all requests and payments</p>
                         </div>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">📁</div>
+                    <div class="feature">
+                        <span class="icon">📁</span>
                         <div>
                             <h4>Reconciliation Exports</h4>
-                            <p>CSV and finance-ready transaction ledgers</p>
+                            <p>CSV and finance-ready ledgers</p>
                         </div>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">⏱️</div>
+                    <div class="feature">
+                        <span class="icon">⏱️</span>
                         <div>
                             <h4>Payment Timestamps</h4>
-                            <p>Precise recording for compliance and audit</p>
+                            <p>Precise recording for compliance</p>
                         </div>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🏷️</div>
+                    <div class="feature">
+                        <span class="icon">🏷️</span>
                         <div>
                             <h4>White-Label Option</h4>
                             <p>Deploy under your own brand</p>
                         </div>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🔒</div>
+                    <div class="feature">
+                        <span class="icon">🔒</span>
                         <div>
                             <h4>Approval Workflows</h4>
-                            <p>Manager sign-off before certificate release</p>
+                            <p>Manager sign-off before release</p>
                         </div>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🔔</div>
+                    <div class="feature">
+                        <span class="icon">🔔</span>
                         <div>
                             <h4>Instant Notifications</h4>
-                            <p>Email alerts when new orders arrive</p>
+                            <p>Email alerts for new orders</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Slide 11: Vision -->
+            <!-- 11. Vision -->
             <section>
-                <span class="section-label">Our Approach</span>
+                <span class="label">Our Approach</span>
                 <h2>Partnership, Not Disruption</h2>
-                <p class="vision-statement">We're not here to change how you work. We're here to <strong>remove the friction</strong> that slows you down. Searchlight is transaction infrastructure — making billing <strong>simple, efficient, and auditable</strong> without changing how certificates are issued.</p>
+                <p class="quote">We're not here to change how you work.<br>We're here to <strong>remove the friction</strong> that slows you down.</p>
             </section>
 
-            <!-- Slide 12: Final -->
-            <section class="final-slide">
-                <div class="logo" style="font-size: 2em;">Search<span>light</span></div>
-                <br>
+            <!-- 12. Final -->
+            <section class="final">
+                <div class="logo">Search<span>light</span></div>
                 <h2>Let's Talk</h2>
-                <p class="gray">Ready to streamline your strata certificate workflow?</p>
-                <div class="contact-info">
-                    <p><a href="https://www.searchlighttechnology.com.au" target="_blank">searchlighttechnology.com.au</a></p>
-                </div>
+                <p>Ready to streamline your strata certificate workflow?</p>
+                <p><a href="https://www.searchlighttechnology.com.au">searchlighttechnology.com.au</a></p>
             </section>
 
         </div>
     </div>
 
     <div class="nav-hint">
-        Use <kbd>←</kbd> <kbd>→</kbd> arrows to navigate · <kbd>ESC</kbd> for overview · <kbd>S</kbd> for speaker notes
+        <kbd>←</kbd> <kbd>→</kbd> to navigate · <kbd>Esc</kbd> overview
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
     <script>
-        // Initialize Reveal.js
         Reveal.initialize({
             hash: true,
             slideNumber: 'c/t',
             progress: true,
             center: true,
             transition: 'fade',
-            transitionSpeed: 'default',
-            backgroundTransition: 'fade',
-            width: 1200,
-            height: 700,
-            margin: 0.1,
-            keyboard: {
-                // Disable left/right when in demo mode
-            }
+            width: 1280,
+            height: 720,
+            margin: 0.04
         });
 
-        // Demo slideshow data
-        const demoData = {
+        // Demo data
+        const demos = {
             manager: {
-                images: [
-                    'images/manager-dashboard.png',
-                    'images/manager-1.png',
-                    'images/manager-2.png',
-                    'images/manager-3.png'
+                el: document.getElementById('demo-manager'),
+                images: ['images/manager-dashboard.png', 'images/manager-1.png', 'images/manager-2.png', 'images/manager-3.png'],
+                titles: ['Active Orders Dashboard', 'Order Assessment', 'Complete Order', 'Completed Dashboard'],
+                descs: [
+                    'View all incoming requests with status and priority at a glance.',
+                    'Review applicant details, payment confirmation, and documents.',
+                    'Process the certificate and complete with one click.',
+                    'View all completed orders with full audit trail.'
                 ],
-                captions: [
-                    { title: 'Active Orders Dashboard', desc: 'View all incoming certificate requests with status, council assignments, and priority at a glance.' },
-                    { title: 'Order Assessment', desc: 'Review incoming requests with complete applicant details, payment confirmation, and uploaded documents.' },
-                    { title: 'Complete Order', desc: 'Process the certificate and mark the order as complete with one click.' },
-                    { title: 'Completed Dashboard', desc: 'View all completed orders with full audit trail and status history.' }
-                ]
+                index: 0
             },
             user: {
-                images: [
-                    'images/strata-1.png',
-                    'images/strata-2.png',
-                    'images/strata-3.png',
-                    'images/strata-4.png',
-                    'images/strata-5.png',
-                    'images/strata-6.png',
-                    'images/strata-7.png'
+                el: document.getElementById('demo-user'),
+                images: ['images/strata-1.png', 'images/strata-2.png', 'images/strata-3.png', 'images/strata-4.png', 'images/strata-5.png', 'images/strata-6.png', 'images/strata-7.png'],
+                titles: ['Orders Dashboard', 'Address Confirmation', 'Certificate Selection', 'Title Upload', 'Checkout & Payment', 'Order Details', 'Email Notification'],
+                descs: [
+                    'Requesters view all their orders with real-time status tracking.',
+                    'Confirm the correct property address from matched results.',
+                    'Choose the certificate type with transparent pricing.',
+                    'Upload title search document securely.',
+                    'Review order and pay with instant confirmation.',
+                    'Track progress and download documents when ready.',
+                    'Receive email confirmation with order summary.'
                 ],
-                captions: [
-                    { title: 'Orders Dashboard', desc: 'View all certificate orders in one place with real-time status tracking.' },
-                    { title: 'Address Confirmation', desc: 'Confirm the correct property address from matched results.' },
-                    { title: 'Certificate Selection', desc: 'Choose the certificate type needed with transparent pricing.' },
-                    { title: 'Title Document Upload', desc: 'Upload title search document securely.' },
-                    { title: 'Checkout & Payment', desc: 'Review order and pay securely with instant confirmation.' },
-                    { title: 'Order Details', desc: 'Track order progress and download documents when ready.' },
-                    { title: 'Email Notification', desc: 'Receive email confirmation with order summary and attachments.' }
-                ]
+                index: 0
             }
         };
 
-        // Initialize demo slideshows
-        function initDemo(containerId, type) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
+        function updateDemo(key) {
+            const d = demos[key];
+            const img = d.el.querySelector('img');
+            const dots = d.el.querySelectorAll('.demo-dot');
+            const prev = d.el.querySelector('.prev-btn');
+            const next = d.el.querySelector('.next-btn');
+            const label = d.el.querySelector('.step-label');
+            const title = d.el.querySelector('.demo-info h4');
+            const desc = d.el.querySelector('.demo-info p');
 
-            const data = demoData[type];
-            const img = container.querySelector('.demo-image');
-            const dots = container.querySelectorAll('.demo-dot');
-            const prevBtn = container.querySelector('.prev-btn');
-            const nextBtn = container.querySelector('.next-btn');
-            const stepSpan = container.querySelector('.demo-step');
-            const titleEl = container.querySelector('.demo-title');
-            const descEl = container.querySelector('.demo-desc');
-            let currentIndex = 0;
-
-            function showSlide(index) {
-                const total = data.images.length;
-                if (index < 0) index = 0;
-                if (index >= total) index = total - 1;
-                currentIndex = index;
-
-                img.src = data.images[index];
-                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-                stepSpan.textContent = `Step ${index + 1} of ${total}`;
-                titleEl.textContent = data.captions[index].title;
-                descEl.textContent = data.captions[index].desc;
-                prevBtn.disabled = index === 0;
-                nextBtn.disabled = index === total - 1;
-            }
-
-            prevBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showSlide(currentIndex - 1);
-            });
-
-            nextBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showSlide(currentIndex + 1);
-            });
-
-            dots.forEach((dot, i) => {
-                dot.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    showSlide(i);
-                });
-            });
-
-            showSlide(0);
+            img.src = d.images[d.index];
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === d.index));
+            prev.disabled = d.index === 0;
+            next.disabled = d.index === d.images.length - 1;
+            label.textContent = `Step ${d.index + 1} of ${d.images.length}`;
+            title.textContent = d.titles[d.index];
+            desc.textContent = d.descs[d.index];
         }
 
-        // Initialize demos when Reveal is ready
-        Reveal.on('ready', () => {
-            initDemo('demo-manager', 'manager');
-            initDemo('demo-user', 'user');
+        Object.keys(demos).forEach(key => {
+            const d = demos[key];
+            d.el.querySelector('.prev-btn').onclick = e => { e.stopPropagation(); if (d.index > 0) { d.index--; updateDemo(key); } };
+            d.el.querySelector('.next-btn').onclick = e => { e.stopPropagation(); if (d.index < d.images.length - 1) { d.index++; updateDemo(key); } };
+            d.el.querySelectorAll('.demo-dot').forEach((dot, i) => {
+                dot.onclick = e => { e.stopPropagation(); d.index = i; updateDemo(key); };
+            });
+            updateDemo(key);
         });
 
-        // Hide nav hint after first navigation
+        // Hide hint after first slide change
         Reveal.on('slidechanged', () => {
             document.querySelector('.nav-hint').style.opacity = '0';
         });
