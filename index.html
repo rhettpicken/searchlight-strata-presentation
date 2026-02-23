@@ -738,6 +738,203 @@
             z-index: 1001;
             transition: width 0.1s ease;
         }
+
+        /* Demo Slideshow Section */
+        .demo {
+            background: var(--navy-light);
+        }
+
+        .demo-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .demo-tab {
+            background: transparent;
+            border: 2px solid rgba(201, 169, 98, 0.3);
+            color: var(--gray-light);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .demo-tab:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .demo-tab.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .slideshow-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+        }
+
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .slideshow-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .slide-nav-btn {
+            background: rgba(201, 169, 98, 0.15);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            color: var(--gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-nav-btn:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .slide-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-indicators {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .slide-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(201, 169, 98, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .slide-dot:hover {
+            background: rgba(201, 169, 98, 0.6);
+        }
+
+        .slide-dot.active {
+            background: var(--gold);
+            transform: scale(1.2);
+        }
+
+        .slide-caption {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .slide-step {
+            display: inline-block;
+            background: rgba(201, 169, 98, 0.15);
+            color: var(--gold);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .slideshow-hidden {
+            display: none;
+        }
+
+        /* Keyboard hint */
+        .keyboard-hint {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        .keyboard-hint kbd {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        @media (max-width: 768px) {
+            .demo-tabs {
+                flex-direction: column;
+            }
+
+            .slideshow-container {
+                padding: 1rem;
+            }
+
+            .slide-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .keyboard-hint {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -749,6 +946,7 @@
             <li><a href="#hero">Overview</a></li>
             <li><a href="#problem">Problem</a></li>
             <li><a href="#how">How It Works</a></li>
+            <li><a href="#demo">Demo</a></li>
             <li><a href="#capabilities">Capabilities</a></li>
             <li><a href="#vision">Vision</a></li>
         </ul>
@@ -850,6 +1048,95 @@
                     <h4>Your Process</h4>
                     <p>Certificates issued exactly as they are today.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo" id="demo">
+        <div class="container">
+            <span class="section-label">Interactive Demo</span>
+            <h2>See It In Action</h2>
+            <p class="section-intro">Experience the streamlined workflow from both perspectives — the requester ordering a certificate and the strata manager processing it.</p>
+
+            <div class="demo-tabs">
+                <button class="demo-tab active" data-target="user">Homeowner Experience</button>
+                <button class="demo-tab" data-target="manager">Strata Manager Experience</button>
+            </div>
+
+            <!-- User Slideshow -->
+            <div id="slideshow-user" class="slideshow-container">
+                <div class="slideshow-wrapper">
+                    <div class="slide active" data-index="0">
+                        <img src="images/strata-1.png" alt="Orders Dashboard">
+                    </div>
+                    <div class="slide" data-index="1">
+                        <img src="images/strata-2.png" alt="Address Confirmation">
+                    </div>
+                    <div class="slide" data-index="2">
+                        <img src="images/strata-3.png" alt="Certificate Selection">
+                    </div>
+                    <div class="slide" data-index="3">
+                        <img src="images/strata-4.png" alt="Title Document Upload">
+                    </div>
+                    <div class="slide" data-index="4">
+                        <img src="images/strata-5.png" alt="Checkout and Payment">
+                    </div>
+                    <div class="slide" data-index="5">
+                        <img src="images/strata-6.png" alt="Order Details">
+                    </div>
+                    <div class="slide" data-index="6">
+                        <img src="images/strata-7.png" alt="Email Notification">
+                    </div>
+                </div>
+                <div class="slideshow-controls">
+                    <button class="slide-nav-btn prev-btn" aria-label="Previous slide">&larr;</button>
+                    <div class="slide-indicators">
+                        <button class="slide-dot active" data-index="0"></button>
+                        <button class="slide-dot" data-index="1"></button>
+                        <button class="slide-dot" data-index="2"></button>
+                        <button class="slide-dot" data-index="3"></button>
+                        <button class="slide-dot" data-index="4"></button>
+                        <button class="slide-dot" data-index="5"></button>
+                        <button class="slide-dot" data-index="6"></button>
+                    </div>
+                    <button class="slide-nav-btn next-btn" aria-label="Next slide">&rarr;</button>
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-step">Step 1 of 7</span>
+                    <h4 class="slide-title">Orders Dashboard</h4>
+                    <p class="slide-desc">View all your certificate orders in one place with real-time status tracking.</p>
+                </div>
+                <p class="keyboard-hint">Use <kbd>&larr;</kbd> <kbd>&rarr;</kbd> arrow keys to navigate</p>
+            </div>
+
+            <!-- Manager Slideshow -->
+            <div id="slideshow-manager" class="slideshow-container slideshow-hidden">
+                <div class="slideshow-wrapper">
+                    <div class="slide active" data-index="0">
+                        <img src="images/manager-1.png" alt="Order Assessment">
+                    </div>
+                    <div class="slide" data-index="1">
+                        <img src="images/manager-2.png" alt="Complete Order">
+                    </div>
+                    <div class="slide" data-index="2">
+                        <img src="images/manager-3.png" alt="Completed Dashboard">
+                    </div>
+                </div>
+                <div class="slideshow-controls">
+                    <button class="slide-nav-btn prev-btn" aria-label="Previous slide">&larr;</button>
+                    <div class="slide-indicators">
+                        <button class="slide-dot active" data-index="0"></button>
+                        <button class="slide-dot" data-index="1"></button>
+                        <button class="slide-dot" data-index="2"></button>
+                    </div>
+                    <button class="slide-nav-btn next-btn" aria-label="Next slide">&rarr;</button>
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-step">Step 1 of 3</span>
+                    <h4 class="slide-title">Order Assessment</h4>
+                    <p class="slide-desc">Review incoming requests with complete applicant details, payment confirmation, and uploaded documents.</p>
+                </div>
+                <p class="keyboard-hint">Use <kbd>&larr;</kbd> <kbd>&rarr;</kbd> arrow keys to navigate</p>
             </div>
         </div>
     </section>
@@ -1000,6 +1287,125 @@
         // Make hero visible immediately
         document.querySelector('.hero').style.opacity = '1';
         document.querySelector('.hero').style.transform = 'translateY(0)';
+
+        // Slideshow functionality
+        const slideshowData = {
+            user: {
+                slides: [
+                    { title: 'Orders Dashboard', desc: 'View all your certificate orders in one place with real-time status tracking.' },
+                    { title: 'Address Confirmation', desc: 'Confirm the correct property address from matched results.' },
+                    { title: 'Certificate Selection', desc: 'Choose the certificate type you need with transparent pricing.' },
+                    { title: 'Title Document Upload', desc: 'Upload your title search document securely.' },
+                    { title: 'Checkout & Payment', desc: 'Review your order and pay securely with instant confirmation.' },
+                    { title: 'Order Details', desc: 'Track your order progress and download documents when ready.' },
+                    { title: 'Email Notification', desc: 'Receive email confirmation with order summary and attachments.' }
+                ]
+            },
+            manager: {
+                slides: [
+                    { title: 'Order Assessment', desc: 'Review incoming requests with complete applicant details, payment confirmation, and uploaded documents.' },
+                    { title: 'Complete Order', desc: 'Process the certificate and mark the order as complete with one click.' },
+                    { title: 'Completed Dashboard', desc: 'View all completed orders with full audit trail and status history.' }
+                ]
+            }
+        };
+
+        let currentSlideshow = 'user';
+
+        function initSlideshow(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const slides = container.querySelectorAll('.slide');
+            const dots = container.querySelectorAll('.slide-dot');
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            const stepSpan = container.querySelector('.slide-step');
+            const titleEl = container.querySelector('.slide-title');
+            const descEl = container.querySelector('.slide-desc');
+            const type = containerId.replace('slideshow-', '');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                const totalSlides = slides.length;
+                if (index < 0) index = 0;
+                if (index >= totalSlides) index = totalSlides - 1;
+                currentIndex = index;
+
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+
+                // Update caption
+                const data = slideshowData[type].slides[index];
+                stepSpan.textContent = `Step ${index + 1} of ${totalSlides}`;
+                titleEl.textContent = data.title;
+                descEl.textContent = data.desc;
+
+                // Update button states
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index === totalSlides - 1;
+            }
+
+            prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+            nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => showSlide(i));
+            });
+
+            // Store showSlide function for keyboard navigation
+            container.showSlide = showSlide;
+            container.getCurrentIndex = () => currentIndex;
+            container.getTotalSlides = () => slides.length;
+
+            showSlide(0);
+        }
+
+        // Initialize both slideshows
+        initSlideshow('slideshow-user');
+        initSlideshow('slideshow-manager');
+
+        // Tab switching
+        const tabs = document.querySelectorAll('.demo-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.target;
+                currentSlideshow = target;
+
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                document.getElementById('slideshow-user').classList.toggle('slideshow-hidden', target !== 'user');
+                document.getElementById('slideshow-manager').classList.toggle('slideshow-hidden', target !== 'manager');
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            // Only handle if demo section is in view
+            const demoSection = document.getElementById('demo');
+            const rect = demoSection.getBoundingClientRect();
+            const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+            if (!isInView) return;
+
+            const container = document.getElementById(`slideshow-${currentSlideshow}`);
+            if (!container.showSlide) return;
+
+            const currentIndex = container.getCurrentIndex();
+            const totalSlides = container.getTotalSlides();
+
+            if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                container.showSlide(currentIndex - 1);
+            } else if (e.key === 'ArrowRight' && currentIndex < totalSlides - 1) {
+                container.showSlide(currentIndex + 1);
+            }
+        });
     </script>
 </body>
 </html>
