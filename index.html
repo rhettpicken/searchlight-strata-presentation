@@ -1113,12 +1113,15 @@
             <div id="slideshow-manager" class="slideshow-container slideshow-hidden">
                 <div class="slideshow-wrapper">
                     <div class="slide active" data-index="0">
-                        <img src="images/manager-1.png" alt="Order Assessment">
+                        <img src="images/manager-dashboard.png" alt="Active Orders Dashboard">
                     </div>
                     <div class="slide" data-index="1">
-                        <img src="images/manager-2.png" alt="Complete Order">
+                        <img src="images/manager-1.png" alt="Order Assessment">
                     </div>
                     <div class="slide" data-index="2">
+                        <img src="images/manager-2.png" alt="Complete Order">
+                    </div>
+                    <div class="slide" data-index="3">
                         <img src="images/manager-3.png" alt="Completed Dashboard">
                     </div>
                 </div>
@@ -1128,13 +1131,14 @@
                         <button class="slide-dot active" data-index="0"></button>
                         <button class="slide-dot" data-index="1"></button>
                         <button class="slide-dot" data-index="2"></button>
+                        <button class="slide-dot" data-index="3"></button>
                     </div>
                     <button class="slide-nav-btn next-btn" aria-label="Next slide">&rarr;</button>
                 </div>
                 <div class="slide-caption">
-                    <span class="slide-step">Step 1 of 3</span>
-                    <h4 class="slide-title">Order Assessment</h4>
-                    <p class="slide-desc">Review incoming requests with complete applicant details, payment confirmation, and uploaded documents.</p>
+                    <span class="slide-step">Step 1 of 4</span>
+                    <h4 class="slide-title">Active Orders Dashboard</h4>
+                    <p class="slide-desc">View all incoming certificate requests with status, council assignments, and priority at a glance.</p>
                 </div>
                 <p class="keyboard-hint">Use <kbd>&larr;</kbd> <kbd>&rarr;</kbd> arrow keys to navigate</p>
             </div>
@@ -1303,6 +1307,7 @@
             },
             manager: {
                 slides: [
+                    { title: 'Active Orders Dashboard', desc: 'View all incoming certificate requests with status, council assignments, and priority at a glance.' },
                     { title: 'Order Assessment', desc: 'Review incoming requests with complete applicant details, payment confirmation, and uploaded documents.' },
                     { title: 'Complete Order', desc: 'Process the certificate and mark the order as complete with one click.' },
                     { title: 'Completed Dashboard', desc: 'View all completed orders with full audit trail and status history.' }
