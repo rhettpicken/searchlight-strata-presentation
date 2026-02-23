@@ -328,9 +328,59 @@
             50% { transform: scale(1.1); }
         }
 
+        /* Why Searchlight Section */
+        .why-us {
+            background: var(--navy);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-card {
+            background: rgba(201, 169, 98, 0.05);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 169, 98, 0.4);
+        }
+
+        .why-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--white);
+        }
+
+        .why-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 1024px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* How It Works Section */
         .how-it-works {
-            background: var(--navy);
+            background: var(--navy-light);
         }
 
         .flow-container {
@@ -945,6 +995,7 @@
         <ul class="nav-links">
             <li><a href="#hero">Overview</a></li>
             <li><a href="#problem">Problem</a></li>
+            <li><a href="#why">Why Us</a></li>
             <li><a href="#how">How It Works</a></li>
             <li><a href="#demo">Demo</a></li>
             <li><a href="#capabilities">Capabilities</a></li>
@@ -954,9 +1005,9 @@
 
     <section class="hero" id="hero">
         <div class="container hero-content">
-            <span class="hero-label">Payment Infrastructure for Strata</span>
-            <h1>We handle the <span>transaction layer</span>.<br>You keep the control.</h1>
-            <p class="hero-subtitle">Searchlight removes the manual invoicing, EFT chasing, and reconciliation burden from strata information requests — while you stay fully in control.</p>
+            <span class="hero-label">Built for Strata Management</span>
+            <h1>Stop chasing payments.<br><span>Get paid before you issue.</span></h1>
+            <p class="hero-subtitle">No more invoicing. No more EFT chasing. No more reconciliation headaches. Just paid requests, ready to process.</p>
 
         </div>
     </section>
@@ -998,6 +1049,32 @@
                         <li>Clean reconciliation exports</li>
                         <li>Full audit trail</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us" id="why">
+        <div class="container">
+            <span class="section-label">Why Searchlight</span>
+            <h2>We've solved this problem before.</h2>
+            <p class="section-intro">Searchlight was built from years of hands-on experience in property transaction infrastructure. We understand the workflow because we've lived it.</p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">🏗️</div>
+                    <h4>Property Transaction Experts</h4>
+                    <p>Deep expertise in Form 1, council searches, and conveyancing workflows across Australia.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">⚙️</div>
+                    <h4>Proven Infrastructure</h4>
+                    <p>Our payment and order management systems are already processing thousands of property transactions.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🤝</div>
+                    <h4>Built With You, Not Around You</h4>
+                    <p>We're not replacing your systems. We're removing the friction that sits between you and getting paid.</p>
                 </div>
             </div>
         </div>
@@ -1059,12 +1136,12 @@
             <p class="section-intro">Experience the streamlined workflow from both perspectives — the requester ordering a certificate and the strata manager processing it.</p>
 
             <div class="demo-tabs">
-                <button class="demo-tab active" data-target="user">Homeowner Experience</button>
-                <button class="demo-tab" data-target="manager">Strata Manager Experience</button>
+                <button class="demo-tab active" data-target="manager">Your Dashboard</button>
+                <button class="demo-tab" data-target="user">How Requests Come In</button>
             </div>
 
             <!-- User Slideshow -->
-            <div id="slideshow-user" class="slideshow-container">
+            <div id="slideshow-user" class="slideshow-container slideshow-hidden">
                 <div class="slideshow-wrapper">
                     <div class="slide active" data-index="0">
                         <img src="images/strata-1.png" alt="Orders Dashboard">
@@ -1110,7 +1187,7 @@
             </div>
 
             <!-- Manager Slideshow -->
-            <div id="slideshow-manager" class="slideshow-container slideshow-hidden">
+            <div id="slideshow-manager" class="slideshow-container">
                 <div class="slideshow-wrapper">
                     <div class="slide active" data-index="0">
                         <img src="images/manager-dashboard.png" alt="Active Orders Dashboard">
@@ -1315,7 +1392,7 @@
             }
         };
 
-        let currentSlideshow = 'user';
+        let currentSlideshow = 'manager';
 
         function initSlideshow(containerId) {
             const container = document.getElementById(containerId);
